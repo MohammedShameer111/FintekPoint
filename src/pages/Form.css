@@ -5,9 +5,10 @@
   padding: 25px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
+  
 }
 
 /* Form heading styling */
@@ -15,7 +16,8 @@
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #333;
+  text-transform: uppercase;
+  color: #02a9f7;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 1px;
 }

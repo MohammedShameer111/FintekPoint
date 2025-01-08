@@ -1,6 +1,5 @@
 /* Reset and Layout */
 .carousel-container {
-  
   margin: 2rem auto;
   position: relative;
   font-family: Arial, sans-serif;
@@ -181,32 +180,32 @@
 /* Large screens (desktop) */
 @media (min-width: 1025px) {
   .carousel-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 2rem auto;
   }
 
   .carousel-slide {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 
   .slide-image img {
-    width: 200px;
+    width: 280px;
   }
 
   .quote {
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
 
   .author {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 
   .nav-button {
-    padding: 0.8rem;
+    padding: 1rem;
   }
 
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
   }
 }
