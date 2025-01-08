@@ -24,19 +24,20 @@ const testimonialsData = [
     pdf: "/path/to/pdf2.pdf",
   },
   {
-    icon: <SiCloudbees />,
-    title: "DevOps & Cloud Migration",
-    description:
-      "Get trained in AWS or Azure Cloud and gain expertise in building robust CI/CD pipelines using tools like Docker, Terraform, and Jenkins. Learn to streamline deployments.",
-    pdf: "/path/to/pdf3.pdf",
-  },
-  {
     icon: <VscDebugAltSmall />,
     title: "Software Testing Automation",
     description:
       "Get trained in Software Quality Assurance (QA) and master the art of test automation. Learn essential tools and methodologies to ensure software reliability.",
     pdf: "/path/to/pdf4.pdf",
   },
+  {
+    icon: <SiCloudbees />,
+    title: "DevOps & Cloud Migration",
+    description:
+      "Get trained in AWS or Azure Cloud and gain expertise in building robust CI/CD pipelines using tools like Docker, Terraform, and Jenkins. Learn to streamline deployments.",
+    pdf: "/path/to/pdf3.pdf",
+  },
+
 ];
 
 const Testimonials = () => {
