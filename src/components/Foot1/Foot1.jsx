@@ -83,7 +83,7 @@ const Foot1 = () => {
             <span className="icon">
               <IoLocationOutline />
             </span>
-            <div>
+            <div className="address">
               <strong>USA :</strong>
               <br />
               7330 Gallagher Dr, Suite 137,
@@ -97,13 +97,13 @@ const Foot1 = () => {
             <span className="icon">
               <IoLocationOutline />
             </span>
-            <div>
+            <div className="address">
               <strong>INDIA :</strong>
               <br />
               S1, 2nd floor, #3 Arunachalam Road,
               <br />
               Saligramam, Chennai – 600 093
-              <div>
+              <div className="address">
                 <br />
                 218, Nethaji Rd, Manjakuppam, Cuddalore,
                 <br />
@@ -115,7 +115,7 @@ const Foot1 = () => {
             <span style={{ color: "green" }} className="icon">
               <LiaPhoneVolumeSolid />
             </span>
-            <div>
+            <div className="address">
               +91 63743 22717 / 99424 44717 / 04142-214717
               <br />
               <a href="mailto:info@fintekpoint.com">info@fintekpoint.com</a>

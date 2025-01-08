@@ -1,95 +1,100 @@
-import React, { useRef } from "react";
+
+import React, { useState, useEffect } from "react";
+import { GrPrevious, GrNext } from "react-icons/gr";
 import "./Testimonials.css";
-import next_icon from "../../assets/next-icon.png";
-import back_icon from "../../assets/back-icon.png";
-import { FaRobot } from "react-icons/fa6";
-import { BsStack } from "react-icons/bs";
-import { SiCloudbees } from "react-icons/si";
-import { VscDebugAltSmall } from "react-icons/vsc";
-import rpa from "../../assets/rpa.pdf";
+import image1 from "../../assets/robot.jpeg"
+import image2 from "../../assets/fullstack.jpeg"
+import image3 from "../../assets/testing.jpeg"
+import image4 from "../../assets/devops.jpeg"
 
-const testimonialsData = [
-  {
-    icon: <FaRobot />,
-    title: "Robotic Process Automation",
-    description:
-      "Unlock your potential with comprehensive training in UiPath, the leading platform for RPA. Learn to automate repetitive tasks, streamline processes.",
-    pdf: rpa,
-  },
-  {
-    icon: <BsStack />,
-    title: "Full Stack Web Development",
-    description:
-      "Master the art of full stack web development with our comprehensive training program. Learn essential technologies like HTML5, CSS, React, Redux, Node.js, AWS.",
-    pdf: "/path/to/pdf2.pdf",
-  },
-  {
-    icon: <VscDebugAltSmall />,
-    title: "Software Testing Automation",
-    description:
-      "Get trained in Software Quality Assurance (QA) and master the art of test automation. Learn essential tools and methodologies to ensure software reliability.",
-    pdf: "/path/to/pdf4.pdf",
-  },
-  {
-    icon: <SiCloudbees />,
-    title: "DevOps & Cloud Migration",
-    description:
-      "Get trained in AWS or Azure Cloud and gain expertise in building robust CI/CD pipelines using tools like Docker, Terraform, and Jenkins. Learn to streamline deployments.",
-    pdf: "/path/to/pdf3.pdf",
-  },
-
-];
 
 const Testimonials = () => {
-  const slider=useRef();
-  let tx=0;
-  const slideForward =()=>{
-    if(tx >-50){
-      tx-=25;
-    }
-    slider.current.style.transform=`translateX(${tx}%)`;
-  }
-  const slideBackward =()=>{
-    if(tx < 0){
-      tx+=25;
-    }
-    slider.current.style.transform=`translateX(${tx}%)`;
-  }
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  const slides = [
+    {
+      image: image1,
+      quote: "Robotic Process Automation",
+      author:
+        "Unlock your potential with comprehensive training in UiPath, the leading platform for RPA. Learn to automate repetitive tasks, streamline processes.",
+    },
+    {
+      image: image2,
+      quote: "Full Stack Web Development",
+      author:
+        "Master the art of full stack web development with our comprehensive training program. Learn essential technologies like HTML5, CSS, React, Redux, Node.js, AWS.",
+    },
+    {
+      image: image3,
+      quote: "Software Testing Automation",
+      author:
+        "Get trained in Software Quality Assurance (QA) and master the art of test automation. Learn essential tools and methodologies to ensure software reliability.",
+    },
+    {
+      image: image4,
+      quote: "DevOps & Cloud Migration",
+      author:
+        "Get trained in AWS or Azure Cloud and gain expertise in building robust CI/CD pipelines using tools like Docker, Terraform, and Jenkins. Learn to streamline deployments.",
+    },
+  ];
 
-
-  const handleDownload = (pdf) => {
-    const link = document.createElement("a");
-    link.href = pdf;
-    link.download = pdf.split("/").pop(); // Dynamically setting the download name
-    link.click();
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
+    );
+  };
 
+  // Auto-scroll logic
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 3000); // Auto-scroll every 3 seconds
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, [currentIndex]);
 
   return (
-    <div className="testimonials">
-      <img src={next_icon} alt="Next" className="next-btn" onClick={slideForward} />
-      <img src={back_icon} alt="Back" className="back-btn" onClick={slideBackward} />
-      <div className="slider">
-        <ul ref={slider} style={{ transform: `translateX(${tx}%)` }}>
-          {testimonialsData.map((testimonial, index) => (
-            <li key={index}>
-              <div className="slide">
-                <div className="user-info">
-                  {/* <span>{testimonial.icon}</span> */}
-                  <div>
-                    <h3>{testimonial.title}</h3>
-                  </div>
-                </div>
-                <p>{testimonial.description}</p>
-                <button className="btns" onClick={() => handleDownload(testimonial.pdf)}>
-                  Download
-                </button>
+    <div className="carousel-container">
+      <div className="carousel">
+        <div
+          className="carousel-slides"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`carousel-slide ${
+                index % 2 === 0 ? "gradient-bg-blue" : "gradient-bg-green"
+              }`}
+            >
+              <div className="slide-image">
+                <img src={slide.image} alt="Slide" />
               </div>
-            </li>
+              <div className="slide-content">
+                <blockquote className="quote">{slide.quote}</blockquote>
+                <p className="author">{slide.author}</p>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
+      </div>
+      <button className="nav-button prev" onClick={prevSlide}>
+        <GrPrevious />
+      </button>
+      <button className="nav-button next" onClick={nextSlide}>
+        <GrNext />
+      </button>
+      <div className="carousel-dots">
+        {slides.map((_, index) => (
+          <div
+            key={index}
+            className={`dot ${currentIndex === index ? "active" : ""}`}
+            onClick={() => setCurrentIndex(index)}
+          ></div>
+        ))}
       </div>
     </div>
   );

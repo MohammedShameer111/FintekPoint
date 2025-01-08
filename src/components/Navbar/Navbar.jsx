@@ -37,7 +37,7 @@ const Navbar = () => {
         <li><Link to='program'  onClick={toggleMenu} smooth={true} offset={-260} duration={500}><RiGraduationCapLine className='icon'/>Program</Link></li>
 
         <li><Link to='campus'  onClick={toggleMenu} smooth={true} offset={-260} duration={500}><HiOutlineBuildingOffice className='icon'/>Campus</Link></li>
-        <li><Link to='testimonials'  onClick={toggleMenu} smooth={true} offset={-260} duration={500}><LuNotebookPen className='icon'/>Courses</Link></li>
+        <li><Link to='carousel-container'  onClick={toggleMenu} smooth={true} offset={-250} duration={500}><LuNotebookPen className='icon'/>Courses</Link></li>
         {/* <li><Link to='contact'  onClick={toggleMenu} smooth={true} offset={-260} duration={500} className='btn'>Contact Us</Link></li> */}
       </ul>
       <img src={menu_icon} alt="" className='menu-icon' onClick={toggleMenu}/>

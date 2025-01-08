@@ -1,8 +1,8 @@
 import React from 'react';
 import './Programs.css';
-import program1 from '../../assets/program-1.png';
-import program2 from '../../assets/program-2.png';
-import program3 from '../../assets/program-3.png';
+import program1 from '../../assets/trainings.jpeg';
+import program2 from '../../assets/jobs.jpeg';
+import program3 from '../../assets/teaching.jpeg';
 import { LiaHandshakeSolid } from "react-icons/lia";
 import { TfiLocationPin } from "react-icons/tfi";
 import { TfiBook } from "react-icons/tfi";

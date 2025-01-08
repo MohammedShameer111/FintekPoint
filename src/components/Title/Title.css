@@ -12,3 +12,12 @@
   margin-top: 5px;
   text-transform: none;
 }
+
+@media (max-width:600px){
+  .title h2{
+    font-size: 26px;
+    color: #000F38;
+    margin-top: 5px;
+    text-transform: none;
+  }
+}
