@@ -16,6 +16,8 @@ const Form = () => {
     coverLetter: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false); // Added state
+
   const [result, setResult] = useState("");
   const [error, setError] = useState("");
 
@@ -33,8 +35,8 @@ const Form = () => {
     // Clear previous messages
     setError("");
     setResult("");
+    setIsSubmitting(true); // Set submitting state to true
 
-    // Basic validation
     const { firstName, lastName, email, phone, linkedinUrl, coverLetter } =
       formData;
 
@@ -47,22 +49,23 @@ const Form = () => {
       !coverLetter
     ) {
       setError("All required fields must be filled.");
+      setIsSubmitting(false);
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email address.");
+      setIsSubmitting(false);
       return;
     }
 
     const phoneRegex = /^[0-9]{10,15}$/; // Accepts 10-15 digits
     if (!phoneRegex.test(phone)) {
       setError("Please enter a valid phone number.");
+      setIsSubmitting(false);
       return;
     }
-
-    setResult("Sending...");
 
     // Prepare form data for submission
     const submissionData = new FormData();
@@ -95,12 +98,13 @@ const Form = () => {
           coverLetter: "",
         });
       } else {
-        console.error("Error:", data);
-        setResult(data.message || "An error occurred.");
+        setError(data.message || "An error occurred.");
       }
     } catch (err) {
       console.error("Fetch Error:", err);
-      setResult("Failed to submit the form. Please try again.");
+      setError("Failed to submit the form. Please try again.");
+    } finally {
+      setIsSubmitting(false); // Reset submitting state
     }
   };
 
@@ -259,7 +263,9 @@ const Form = () => {
 
         {/* Submit Button */}
         <div className="form-groups">
-          <button type="submit">Submit Application</button>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Submit Application"}
+          </button>
         </div>
 
         {/* Display Messages */}

@@ -135,7 +135,7 @@ const Foot1 = () => {
       </div>
       <div className="form">
         <form onSubmit={onSubmit}>
-          <h2>APPLY NOW</h2>
+          <h2>CONTACT US</h2>
           <div className="form-group">
             <label htmlFor="name"> Name</label>
             <input
