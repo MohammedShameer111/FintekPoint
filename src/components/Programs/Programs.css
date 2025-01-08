@@ -1,0 +1,174 @@
+.programs {
+  margin: 80px auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.program {
+  flex-basis: calc(33.333% - 20px);
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.program img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.6),rgb(63, 63, 251));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.5s, padding-top 0.5s;
+  padding: 20px;
+  text-align: center;
+}
+
+.caption .capicon {
+  font-size: 60px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.caption .title {
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.caption p {
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+.program:hover img {
+  transform: scale(1.1);
+}
+
+.program:hover .caption {
+  opacity: 1;
+  
+}
+
+@media (max-width: 650px) {
+  .programs {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .program {
+    flex-basis: 100%;
+  }
+  
+}
+@media (max-width: 1430px){
+  .caption .capicon {
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  
+  .caption .title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .caption p {
+    line-height: 1.3;
+    font-size: 16px;
+  }
+}
+@media (max-width: 1050px){
+  .caption .capicon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  
+  .caption .title {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .caption p {
+    line-height: 1.3;
+    font-size: 12px;
+  }
+}
+@media (max-width: 860px){
+  .caption .capicon {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  
+  .caption .title {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .caption p {
+    line-height: 1;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 650px){
+  .caption .capicon {
+    font-size: 76px;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  
+  .caption .title {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .caption p {
+    line-height: 2;
+    font-size: 16px;
+  }
+}
+@media (max-width: 440px){
+  .caption .capicon {
+    font-size: 46px;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  
+  .caption .title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  .caption p {
+    line-height: 1.5;
+    font-size: 12px;
+    
+    
+  }
+}

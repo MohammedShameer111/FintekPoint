@@ -1,0 +1,142 @@
+nav{
+  width:100%;
+  /* background: #333; */
+  color:#fff;
+  padding: 16px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+.fintek{
+  display: flex;
+  align-items: center;
+  
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  margin:5px 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background:#02a9f7 ;
+  bottom: -4px; /* Adjust to move underline closer or farther */
+  left: 0;
+  transition: width 0.3s ease;
+  border-bottom: 2px dashed #02a9f7 ; /* Dashed underline */
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.dark-nav{
+  background: #151e5f;
+  transition: 0.5s;
+}
+.menu-icon{
+  display: none;
+}
+ul li .icon{
+  display: none;
+}
+/* ---- media query ----- */
+
+/* @media (max-width:1000px){
+  .logo{
+    width:140px;
+  }
+  nav ul li{
+    margin: 10px 15px;
+  }
+} */
+@media (max-width:700px){
+  nav{
+    padding: 15px 0;
+  }
+  nav ul{
+    position: fixed;
+    top: 0;
+    right: 0px;
+    bottom: 0;
+    background: #151e5f;
+    z-index: -1;
+    width: 217px;
+    padding-top: 70px;
+    transition: 0.5s;
+   
+  }
+  nav ul li{
+    display: block;
+   line-height: 3;
+    margin: 5px 15px;
+  }
+ ul li .icon{
+ 
+   display: inline-block;
+    font-size: 20px;
+    margin-right: 10px;
+    
+  }
+  .menu-icon{
+    display: block;
+    width: 30px;
+    cursor: pointer;
+   
+  }
+  .hide-mobile-menu{
+    right: -217px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1180px) {
+  nav {
+    padding: 15px 0;
+  }
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: 0; /* Changed from 0px to 0 for consistency */
+    bottom: 0;
+    background: #151e5f;
+    z-index: -1;
+    width: 500px;
+    padding-top: 70px;
+    transition: 0.5s;
+  }
+  nav ul li {
+    display: block;
+    line-height: 3;
+    margin: 10px 25px;
+    font-size: 30px;
+  }
+  ul li .icon {
+    display: inline-block;
+    font-size: 40px;
+    margin-right: 30px;
+  }
+  .menu-icon {
+    display: block;
+    width: 30px;
+    cursor: pointer;
+  }
+  nav ul.hide-mobile-menu {
+    right: -500px; /* Ensure specificity by including 'nav ul' */
+  }
+}
+

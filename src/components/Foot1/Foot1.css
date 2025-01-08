@@ -1,0 +1,209 @@
+/* General Section Styling */
+.section-m1 {
+  background-color: #151e5f;
+  padding: 40px 20px;
+  text-align: center;
+  box-sizing: border-box;
+  font-family:'Montserrat' , sans-serif; /* Ensures padding doesn't affect width */
+}
+
+.section-p1 {
+  color: white;
+  margin: 0 auto; /* Center content vertically */
+  box-sizing: border-box;
+}
+
+/* Newsletter Text Section */
+.newstext {
+  text-align: left;
+  margin-bottom: 30px;
+  padding: 0 10px; /* Add spacing for smaller screens */
+  box-sizing: border-box;
+}
+
+.newstext h4 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #ff004f;
+  
+}
+
+.newstext p {
+  font-size: 20px;
+}
+
+.newstext p span {
+  color: #ff4c68;
+  font-weight: bold;
+}
+
+.newstext ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.newstext ul li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.newstext ul .icon {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.newstext ul li div {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.follow {
+  margin-top: 30px;
+}
+
+.follow h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.follow .icon i {
+  font-size: 28px;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.follow .icon i:hover {
+  color: #007bff;
+}
+.form h2{
+  color: #ff004f;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: flex;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Error and Success Messages */
+.error-message,
+.form-result {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.error-message {
+  color: #ff4c68;
+}
+
+.form-result {
+  color: green;
+}
+
+/* Responsive Design for Tablets and Desktop (768px and above) */
+@media (min-width: 768px) {
+  .section-m1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Ensure items wrap if necessary */
+  }
+
+  .newstext, .form {
+    flex: 1; /* Allow equal space */
+    margin-right: 20px;
+  }
+
+  .form {
+    margin-right: 0; /* Remove extra margin for last item */
+  }
+}
+
+/* Mobile View (Below 767px) */
+@media (max-width: 767px) {
+  /* Text Section Styling */
+  .newstext h4 {
+    font-size: 18px; /* Adjust for smaller screens */
+  }
+
+  .newstext p {
+    font-size: 16px; /* Adjust for smaller screens */
+  }
+
+  .newstext ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+
+  .newstext ul .icon {
+    font-size: 20px; /* Reduce icon size */
+    margin-bottom: 10px; /* Add margin between icon and text */
+  }
+
+  .newstext ul li div {
+    font-size: 16px; /* Adjust text size */
+  }
+
+  /* Form Section Styling */
+  .form {
+    margin-top: 30px;
+    width: 90%; /* Make the form take up more space on mobile */
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 14px; /* Adjust font size */
+    padding: 10px 12px; /* Adjust padding */
+  }
+
+  .form-group label {
+    font-size: 14px; /* Adjust label font size */
+  }
+
+  .btn {
+    font-size: 14px; /* Adjust button font size */
+    padding: 10px 15px;
+  }
+
+  /* Follow Section Styling */
+  .follow h4 {
+    font-size: 16px; /* Adjust font size */
+  }
+
+  .follow .icon i {
+    font-size: 22px; /* Adjust icon size for mobile */
+    margin: 0 5px; /* Reduce spacing between icons */
+  }
+}

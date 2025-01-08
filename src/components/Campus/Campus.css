@@ -1,0 +1,43 @@
+.campus {
+  margin: 50px auto;
+  width: 100%;
+  text-align: center;
+  
+}
+
+.gallery {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 20px; /* Adds consistent spacing between images */
+}
+
+.gallery img {
+  width: 23%;
+  border-radius: 10px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Adds a shadow effect on hover */
+}
+
+
+
+/* ---Media Query--- */
+@media (max-width: 800px) {
+  .gallery {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .gallery img {
+    width: 46%;
+    margin: 15px auto;
+  }
+
+
+}
