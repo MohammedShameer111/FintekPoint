@@ -1,34 +1,107 @@
-import React, { useState } from 'react';
-import './Form.css';
+import React, { useState } from "react";
+import "./Form.css";
 
 const Form = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    education: '',
-    graduationYear: '',
-    location: '',
-    employmentStatus: '',
-    linkedinUrl: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    education: "",
+    graduationYear: "",
+    location: "",
+    employmentStatus: "",
+    linkedinUrl: "",
     resume: null,
-    coverLetter: '',
+    coverLetter: "",
   });
+
+  const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'file' ? files[0] : value,
+      [name]: type === "file" ? files[0] : value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Data Submitted:', formData);
 
-    // Add submission logic here (e.g., API call)
+    // Clear previous messages
+    setError("");
+    setResult("");
+
+    // Basic validation
+    const { firstName, lastName, email, phone, linkedinUrl, coverLetter } =
+      formData;
+
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !phone ||
+      !linkedinUrl ||
+      !coverLetter
+    ) {
+      setError("All required fields must be filled.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    const phoneRegex = /^[0-9]{10,15}$/; // Accepts 10-15 digits
+    if (!phoneRegex.test(phone)) {
+      setError("Please enter a valid phone number.");
+      return;
+    }
+
+    setResult("Sending...");
+
+    // Prepare form data for submission
+    const submissionData = new FormData();
+    Object.keys(formData).forEach((key) => {
+      submissionData.append(key, formData[key]);
+    });
+    submissionData.append("access_key", "34365223-0a22-4d45-bded-567f7980ac6b");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Form Submitted Successfully");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          education: "",
+          graduationYear: "",
+          location: "",
+          employmentStatus: "",
+          linkedinUrl: "",
+          resume: null,
+          coverLetter: "",
+        });
+      } else {
+        console.error("Error:", data);
+        setResult(data.message || "An error occurred.");
+      }
+    } catch (err) {
+      console.error("Fetch Error:", err);
+      setResult("Failed to submit the form. Please try again.");
+    }
   };
 
   return (
@@ -94,7 +167,6 @@ const Form = () => {
             name="education"
             value={formData.education}
             onChange={handleChange}
-            required
           >
             <option value="" disabled>
               Select your education level
@@ -116,7 +188,6 @@ const Form = () => {
             value={formData.graduationYear}
             onChange={handleChange}
             placeholder="Enter year"
-            required
           />
         </div>
 
@@ -129,7 +200,6 @@ const Form = () => {
             value={formData.location}
             onChange={handleChange}
             placeholder="Enter your location"
-            required
           />
         </div>
 
@@ -140,7 +210,6 @@ const Form = () => {
             name="employmentStatus"
             value={formData.employmentStatus}
             onChange={handleChange}
-            required
           >
             <option value="" disabled>
               Select your employment status
@@ -172,7 +241,6 @@ const Form = () => {
             name="resume"
             accept=".pdf"
             onChange={handleChange}
-            required
           />
         </div>
 
@@ -193,6 +261,10 @@ const Form = () => {
         <div className="form-groups">
           <button type="submit">Submit Application</button>
         </div>
+
+        {/* Display Messages */}
+        {error && <p className="error">{error}</p>}
+        {result && <p className="result">{result}</p>}
       </form>
     </div>
   );
